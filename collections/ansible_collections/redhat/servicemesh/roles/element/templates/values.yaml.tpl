@@ -39,14 +39,14 @@ environment:
 - name: NEXT_SVC
   value: 'http://{{ item.next }}-mesh-element:3000'
 - name: JUMPS
-  value: '12'
+  value: "{{ helmchart_jumps }}"
 
-wildcard: {{ helmchart_wildcard_domain }}
+wildcard: "{{ helmchart_wildcard_domain }}"
 
 servicemesh:
   create: true
   gateway:
-    create: false
+    create: "{{ element_create_gw }}"
   subsets:
   - labels:
       version: v1

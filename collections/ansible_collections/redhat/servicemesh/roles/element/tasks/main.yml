@@ -1,4 +1,5 @@
-
+- set_fact:
+    element_create_gw: true
 - name: helm gw
   kubernetes.core.helm:
     host: "{{ openshift_url }}"
@@ -9,11 +10,13 @@
     chart_version: "{{ helmchart_version }}"
     release_name: "{{ item.name }}"
     release_namespace: "{{ helmchart_namespace }}"
-    release_values: "{{ lookup('template', 'valuesgw.yaml.tpl') | from_yaml }}"
+    release_values: "{{ lookup('template', 'values.yaml.tpl') | from_yaml }}"
     release_state: "{{ helmchart_state }}"
   loop: "{{ helmchart_gwelement }}"
   loop_control:
     label: "{{ item.name }}"
+- set_fact:
+    element_create_gw: false
 - name: helm gw
   kubernetes.core.helm:
     host: "{{ openshift_url }}"
