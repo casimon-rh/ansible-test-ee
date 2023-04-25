@@ -10,7 +10,7 @@
     release_name: "{{ item.name }}"
     release_namespace: "{{ helmchart_namespace }}"
     release_values: "{{ lookup('template', 'valuesgw.yaml.tpl') | from_yaml }}"
-    state: "{{ helmchart_state }}"
+    release_state: "{{ helmchart_state }}"
   loop: "{{ helmchart_gwelement }}"
   loop_control:
     label: "{{ item.name }}"
@@ -25,7 +25,7 @@
     release_name: "{{ item.name }}"
     release_namespace: "{{ helmchart_namespace }}"
     release_values: "{{ lookup('template', 'values.yaml.tpl') | from_yaml }}"
-    state: "{{ helmchart_state }}"
+    release_state: "{{ helmchart_state }}"
   loop: "{{ helmchart_elements }}"
   loop_control:
     label: "{{ item.name }}"
