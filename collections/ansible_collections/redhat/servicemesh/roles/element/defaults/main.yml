@@ -1,0 +1,6 @@
+---
+# defaults file for roles/mesh-element-role
+openshift_valcerts: no
+helmchart_ref: mesh-element
+helmchart_version: 0.1.0
+helmchart_state: present

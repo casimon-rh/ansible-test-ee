@@ -1,0 +1,16 @@
+namespace: redhat
+name: servicemesh
+version: 1.0.0
+readme: README.md
+authors:
+- Carlos Simon <casimon@redhat.com>
+description: Service Mesh Test collection
+license:
+- GPL-2.0-or-later
+license_file: ''
+tags: []
+dependencies:
+  kubernetes.core: ">=2.4.0"
+repository: http://example.com/repository
+documentation: http://docs.example.com
+build_ignore: []

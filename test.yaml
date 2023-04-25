@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  become: no
+  gather_facts: no
+  collections:
+  - redhat.servicemesh
+  vars_files:
+    creds.yaml
+  tasks:
+  - import_role:
+      name: element
