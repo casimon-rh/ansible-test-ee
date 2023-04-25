@@ -41,7 +41,7 @@ environment:
 - name: JUMPS
   value: '12'
 
-wildcard: .apps.cluster-s8c5v.s8c5v.sandbox3107.opentlc.com
+wildcard: {{ helmchart_wildcard_domain }}
 
 servicemesh:
   create: true
