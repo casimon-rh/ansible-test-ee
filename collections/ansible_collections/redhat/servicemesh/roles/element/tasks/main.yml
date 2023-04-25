@@ -1,8 +1,31 @@
----
-- name: auth_ocp
-  kubernetes.core.k8s_auth:
+
+- name: helm gw
+  kubernetes.core.helm:
     host: "{{ openshift_url }}"
-    username: "{{ openshift_username }}"
-    password: "{{ openshift_password }}"
+    api_key: "{{openshift_token}}"
     validate_certs: "{{ openshift_valcerts }}"
-  register: ocp_auth_results
+    chart_repo_url: "{{ helmchart_url }}"
+    chart_ref: "{{ helmchart_ref }}"
+    chart_version: "{{ helmchart_version }}"
+    release_name: "{{ item.name }}"
+    release_namespace: "{{ helmchart_namespace }}"
+    release_values: "{{ lookup('template', 'valuesgw.yaml.tpl') | from_yaml }}"
+    state: "{{ helmchart_state }}"
+  loop: "{{ helmchart_gwelement }}"
+  loop_control:
+    label: "{{ item.name }}"
+- name: helm gw
+  kubernetes.core.helm:
+    host: "{{ openshift_url }}"
+    api_key: "{{openshift_token}}"
+    validate_certs: "{{ openshift_valcerts }}"
+    chart_repo_url: "{{ helmchart_url }}"
+    chart_ref: "{{ helmchart_ref }}"
+    chart_version: "{{ helmchart_version }}"
+    release_name: "{{ item.name }}"
+    release_namespace: "{{ helmchart_namespace }}"
+    release_values: "{{ lookup('template', 'values.yaml.tpl') | from_yaml }}"
+    state: "{{ helmchart_state }}"
+  loop: "{{ helmchart_elements }}"
+  loop_control:
+    label: "{{ item.name }}"

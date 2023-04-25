@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  become: no
+  gather_facts: no
+  tasks:
+  - ansible.builtin.wait_for:
+      timeout: 300000

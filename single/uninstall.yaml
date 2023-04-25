@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  become: no
+  gather_facts: no
+  vars:
+    helmchart_state: absent
+  collections:
+  - redhat.servicemesh
+  tasks:
+  - import_role:
+      name: element

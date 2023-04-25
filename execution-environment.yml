@@ -1,0 +1,9 @@
+---
+version: 1
+dependencies:
+  galaxy: requirements.yml
+  python: requirements.txt
+  system: bindep.txt
+# v3.11.3
+additional_build_steps:
+  append: RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/v3.11.3/scripts/get-helm-3 && chmod 700 get_helm.sh && VERIFY_CHECKSUM=false ./get_helm.sh && rm -f get_helm.sh helm plugin install https://github.com/databus23/helm-diff
