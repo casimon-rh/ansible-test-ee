@@ -1,6 +1,0 @@
----
-collections:
-  - name: /build/redhat
-    type: subdirs
-  - name: kubernetes.core
-    version: ">=2.4.0"

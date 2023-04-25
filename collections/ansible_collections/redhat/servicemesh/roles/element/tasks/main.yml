@@ -1,8 +1,0 @@
----
-- name: auth_ocp
-  kubernetes.core.k8s_auth:
-    host: "{{ openshift_url }}"
-    username: "{{ openshift_username }}"
-    password: "{{ openshift_password }}"
-    validate_certs: "{{ openshift_valcerts }}"
-  register: ocp_auth_results
